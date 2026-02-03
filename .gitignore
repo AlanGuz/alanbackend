@@ -1,2 +1,9 @@
+HEAD
 node_modules
 .env
+# Avoid including Experiment files: they can be created and edited locally to test the ipf files
+*.pxp
+*.pxt
+*.uxp
+*.uxt
+ccdaee784a220e68cf8a5b9e69c25ae22a6de1d5
