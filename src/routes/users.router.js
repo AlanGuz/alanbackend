@@ -1,12 +1,12 @@
 import { Router } from "express";
 import bcrypt from "bcrypt";
-import { UserModel } from "../models/user.model.js";
-import { CartModel } from "../models/cart.model.js";
+import  UserModel  from "../models/user.model.js";
+import  CartModel  from "../models/cart.model.js";
 
 const router = Router();
 
 // Crear usuario 
-router.post("/", async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     const { first_name, last_name, email, age, password } = req.body;
 
@@ -27,7 +27,17 @@ router.post("/", async (req, res) => {
       cart: cart._id
     });
 
-    res.status(201).json({ status: "success", payload: newUser });
+    res.status(201).json({
+  status: "success",
+  message: "Usuario registrado correctamente",
+  user: {
+    id: newUser._id,
+    first_name: newUser.first_name,
+    email: newUser.email,
+    role: newUser.role,
+    cartId: cart._id
+  }
+});
   } catch (error) {
     res.status(500).json({ status: "error", error: error.message });
   }

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import passport from "passport";
 import { generateToken } from "../utils/jwt.js";
+import { requestPasswordReset, resetPassword } from "../controllers/sessions.controller.js";
 
 const router = Router();
 
@@ -12,8 +13,15 @@ router.post("/login", passport.authenticate("login", { session: false }), (req, 
 });
 
 // Ruta protegida
-router.get("/current", passport.authenticate("jwt", { session: false }), (req, res) => {
-  res.json({ status: "success", payload: req.user });
-});
+import { getCurrentUser } from "../controllers/sessions.controller.js";
+
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session:false }),
+  getCurrentUser
+);
 
 export default router;
+
+router.post("/forgot-password", requestPasswordReset);
+router.post("/reset-password/:token", resetPassword);

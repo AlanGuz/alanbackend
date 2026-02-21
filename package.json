@@ -1,5 +1,5 @@
 {
-  "name": "coderhouse",
+  "name": "streetshop-backend",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -15,11 +15,14 @@
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
+    "express-handlebars": "^8.0.6",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
+    "nodemailer": "^8.0.1",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
